@@ -49,62 +49,154 @@
                     <p>Whether it was a healing, breakthrough, deliverance, provision, restoration, or a supernatural
                         encounter, we would love to hear your story.</p>
                 </div>
-                <form id="testimonyForm" action="https://forminit.com/f/zs46v8illwj" method="POST"
-                    enctype="multipart/form-data">
-                    <input type="hidden" name="subject" value="New testimony submission">
-                    <input type="hidden" name="from_name" value="Chapel Of Grace testimony form">
-                    <div class="form-row"><label>Full name<input name="name" type="text" placeholder="Your name"
-                                required></label><label>Email or phone<input name="contact" type="text"
-                                placeholder="How we can reach you" required></label></div>
-                    <div class="form-row"><label>Testimony title<input name="title" type="text"
-                                placeholder="Give your testimony a title" required></label><label>Department in
-                            church<input name="department" type="text" placeholder="Your department" required></label>
-                    </div>
-                    <label>Your story<textarea name="testimony" rows="6"
-                            placeholder="Share what God has done in your life..." required></textarea></label>
-                    <fieldset>
-                        <legend>Which church location?</legend>
-                        <div class="category-list"><label><input type="radio" name="location" value="ibadan"
-                                    required><span>Ibadan</span></label><label><input type="radio" name="location"
-                                    value="ado-ekiti"><span>Ado-Ekiti</span></label></div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Category</legend>
-                        <div class="category-list"><label><input type="radio" name="category" value="healing"
-                                    required><span>Healing</span></label><label><input type="radio" name="category"
-                                    value="provision"><span>Provision</span></label><label><input type="radio"
-                                    name="category" value="career-breakthrough"><span>Career
-                                    breakthrough</span></label><label><input type="radio" name="category"
-                                    value="family"><span>Family</span></label><label><input type="radio" name="category"
-                                    value="restoration"><span>Restoration</span></label><label><input type="radio"
-                                    name="category" value="salvation"><span>Salvation</span></label><label><input
-                                    type="radio" name="category" value="other"><span>Other</span></label></div>
-                    </fieldset>
-                    <div class="upload-field" id="uploadField">
-                        <input id="mediaInput" type="file" name="media" accept="image/*,video/*">
-                        <label class="upload-content" for="mediaInput">
-                            <span class="upload-icon" aria-hidden="true">+</span>
-                            <strong>Add a photo or video</strong>
-                            <span>Drag and drop or choose a file</span>
-                            <small>JPG, PNG, MP4 &middot; Up to 25MB</small>
-                        </label>
-                        <div class="upload-preview" id="uploadPreview" hidden></div>
-                        <p class="upload-error" id="uploadError" role="alert" hidden></p>
-                    </div>
-                    <fieldset>
-                        <legend>Can we share your testimony publicly <span aria-hidden="true">*</span></legend>
-                        <div class="sharing-options"><label><input type="radio" name="publicSharing" value="public"
-                                    required><span><strong>A</strong> Yes, you may share my
-                                    testimony</span></label><label><input type="radio" name="publicSharing"
-                                    value="anonymous"><span><strong>B</strong> Yes, but keep me
-                                    anonymous</span></label><label><input type="radio" name="publicSharing"
-                                    value="documentation"><span><strong>C</strong> No, I am sharing this for
-                                    documentation</span></label></div>
-                    </fieldset>
-                    <button class="button button-blue" type="submit">Submit testimony <span
-                            aria-hidden="true">&rarr;</span></button>
-                    <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
-                </form>
+        <form id="testimonyForm" action="https://forminit.com/f/zs46v8illwj" method="POST" enctype="multipart/form-data">
+        
+            <input type="hidden" name="fi-text-subject" value="New testimony submission">
+            <input type="hidden" name="fi-text-fromName" value="Chapel Of Grace testimony form">
+        
+            <div class="form-row">
+                <label>
+                    Full name
+                    <input name="fi-sender-fullName" type="text" placeholder="Your name" required>
+                </label>
+        
+                <label>
+                    Email or phone
+                    <input name="fi-text-contact" type="text" placeholder="How we can reach you" required>
+                </label>
+            </div>
+        
+            <div class="form-row">
+                <label>
+                    Testimony title
+                    <input name="fi-text-title" type="text" placeholder="Give your testimony a title" required>
+                </label>
+        
+                <label>
+                    Department in church
+                    <input name="fi-text-department" type="text" placeholder="Your department" required>
+                </label>
+            </div>
+        
+            <label>
+                Your story
+                <textarea name="fi-text-testimony" rows="6" placeholder="Share what God has done in your life..."
+                    required></textarea>
+            </label>
+        
+            <fieldset>
+                <legend>Which church location?</legend>
+        
+                <div class="category-list">
+                    <label>
+                        <input type="radio" name="fi-radio-location" value="ibadan" required>
+                        <span>Ibadan</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-location" value="ado-ekiti">
+                        <span>Ado-Ekiti</span>
+                    </label>
+                </div>
+            </fieldset>
+        
+            <fieldset>
+                <legend>Category</legend>
+        
+                <div class="category-list">
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="healing" required>
+                        <span>Healing</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="provision">
+                        <span>Provision</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="career-breakthrough">
+                        <span>Career breakthrough</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="family">
+                        <span>Family</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="restoration">
+                        <span>Restoration</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="salvation">
+                        <span>Salvation</span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-category" value="other">
+                        <span>Other</span>
+                    </label>
+                </div>
+            </fieldset>
+        
+            <div class="upload-field" id="uploadField">
+                <input id="mediaInput" type="file" name="fi-file-media" accept="image/*,video/*">
+        
+                <label class="upload-content" for="mediaInput">
+                    <span class="upload-icon" aria-hidden="true">+</span>
+                    <strong>Add a photo or video</strong>
+                    <span>Drag and drop or choose a file</span>
+                    <small>JPG, PNG, MP4 &middot; Up to 25MB</small>
+                </label>
+        
+                <div class="upload-preview" id="uploadPreview" hidden></div>
+        
+                <p class="upload-error" id="uploadError" role="alert" hidden></p>
+            </div>
+        
+            <fieldset>
+                <legend>
+                    Can we share your testimony publicly
+                    <span aria-hidden="true">*</span>
+                </legend>
+        
+                <div class="sharing-options">
+                    <label>
+                        <input type="radio" name="fi-radio-publicSharing" value="public" required>
+                        <span>
+                            <strong>A</strong>
+                            Yes, you may share my testimony
+                        </span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-publicSharing" value="anonymous">
+                        <span>
+                            <strong>B</strong>
+                            Yes, but keep me anonymous
+                        </span>
+                    </label>
+        
+                    <label>
+                        <input type="radio" name="fi-radio-publicSharing" value="documentation">
+                        <span>
+                            <strong>C</strong>
+                            No, I am sharing this for documentation
+                        </span>
+                    </label>
+                </div>
+            </fieldset>
+        
+            <button class="button button-blue" type="submit">
+                Submit testimony
+                <span aria-hidden="true">&rarr;</span>
+            </button>
+        
+            <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+        
+        </form>
                 <div class="success-message" id="successMessage" hidden>
                     <div class="success-panel">
                         <p class="eyebrow">Thank you</p>
