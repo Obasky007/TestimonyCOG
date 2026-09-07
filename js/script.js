@@ -214,28 +214,21 @@ function setupForm() {
         event.preventDefault();
         if (!form.reportValidity() || submitButton.disabled) return;
 
-        const accessKey = form.elements.access_key.value.trim();
-        if (!accessKey || accessKey === 'PASTE_WEB3FORMS_ACCESS_KEY_HERE') {
-            formStatus.textContent = 'Add your Web3Forms access key before submitting this form.';
-            formStatus.className = 'form-status error';
-            formStatus.hidden = false;
-            return;
-        }
-
         const originalButtonText = submitButton.innerHTML;
         const formData = new FormData(form);
-        if (file.files[0]) formData.append('attachment', file.files[0]);
         submitButton.disabled = true;
         submitButton.innerHTML = 'Submitting...';
         formStatus.hidden = true;
 
-        fetch('https://api.web3forms.com/submit', {
+        fetch(form.action, {
             method: 'POST',
             body: formData
         })
             .then(async (response) => {
-                const result = await response.json().catch(() => ({}));
-                if (!response.ok || !result.success) throw new Error(result.message || 'Submission failed.');
+                if (!response.ok) {
+                    const result = await response.json().catch(() => ({}));
+                    throw new Error(result.message || 'Submission failed.');
+                }
                 form.reset();
                 clearPreview();
                 uploadError.hidden = true;

@@ -116,7 +116,7 @@ textarea {
 
 .hero-image {
     z-index: -2;
-    background: #26394b url('./hero.jpg') center / cover no-repeat;
+    background: #26394b url('../assets/images/hero.jpg') center / cover no-repeat;
 }
 
 .hero-shade {
