@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Share your testimony with the Chapel Of Grace community.">
+    <title>Share Your Testimony - Chapel Of Grace</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="share-page">
+    <header class="site-header" id="siteHeader">
+        <a class="brand" href="index.html#top" aria-label="Chapel Of Grace home"><img class="brand-logo" src="logo.jpg"
+                alt="Chapel Of Grace"></a>
+        <nav class="desktop-nav" aria-label="Primary navigation"><a href="share.html" aria-current="page">Share your
+                testimony</a><a href="stories.html">Read testimonies</a></nav>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"
+            aria-controls="mobileNav"><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"><a href="share.html"
+                aria-current="page">Share your
+                testimony</a><a href="stories.html">Read testimonies</a></nav>
+    </header>
+
+    <main id="top">
+        <section class="hero share-hero" aria-labelledby="shareHeroTitle">
+            <div class="hero-image" aria-hidden="true"></div>
+            <div class="hero-shade" aria-hidden="true"></div>
+            <div class="hero-inner page-width">
+                <p class="eyebrow light">Chapel Of Grace / Your story matters</p>
+                <h1 id="shareHeroTitle">Tell the story<br><em>of God's faithfulness.</em></h1>
+                <p class="hero-copy">Your testimony may be the encouragement someone else needs today.</p>
+            </div>
+        </section>
+
+        <div class="wave-divider wave-sky" aria-hidden="true"></div>
+        <section class="share-section section" id="share">
+            <div class="page-width narrow-width">
+                <div class="section-heading">
+                    <p class="eyebrow">Share your story</p>
+                    <h2>What has God<br>done for you?</h2>
+                    <p>Whether it was a healing, breakthrough, deliverance, provision, restoration, or a supernatural
+                        encounter, we would love to hear your story.</p>
+                </div>
+                <form id="testimonyForm" enctype="multipart/form-data">
+                    <input type="hidden" name="access_key" value="eef66657-2991-435d-825e-352e57eb34a8">
+                    <input type="hidden" name="subject" value="New testimony submission">
+                    <input type="hidden" name="from_name" value="Chapel Of Grace testimony form">
+                    <div class="form-row"><label>Full name<input name="name" type="text" placeholder="Your name"
+                                required></label><label>Email or phone<input name="contact" type="text"
+                                placeholder="How we can reach you" required></label></div>
+                    <div class="form-row"><label>Testimony title<input name="title" type="text"
+                                placeholder="Give your testimony a title" required></label><label>Department in
+                            church<input name="department" type="text" placeholder="Your department" required></label>
+                    </div>
+                    <label>Your story<textarea name="testimony" rows="6"
+                            placeholder="Share what God has done in your life..." required></textarea></label>
+                    <fieldset>
+                        <legend>Which church location?</legend>
+                        <div class="category-list"><label><input type="radio" name="location" value="ibadan"
+                                    required><span>Ibadan</span></label><label><input type="radio" name="location"
+                                    value="ado-ekiti"><span>Ado-Ekiti</span></label></div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Category</legend>
+                        <div class="category-list"><label><input type="radio" name="category" value="healing"
+                                    required><span>Healing</span></label><label><input type="radio" name="category"
+                                    value="provision"><span>Provision</span></label><label><input type="radio"
+                                    name="category" value="career-breakthrough"><span>Career
+                                    breakthrough</span></label><label><input type="radio" name="category"
+                                    value="family"><span>Family</span></label><label><input type="radio" name="category"
+                                    value="restoration"><span>Restoration</span></label><label><input type="radio"
+                                    name="category" value="salvation"><span>Salvation</span></label><label><input
+                                    type="radio" name="category" value="other"><span>Other</span></label></div>
+                    </fieldset>
+                    <div class="upload-field" id="uploadField">
+                        <input id="mediaInput" type="file" name="media" accept="image/*,video/*">
+                        <label class="upload-content" for="mediaInput">
+                            <span class="upload-icon" aria-hidden="true">+</span>
+                            <strong>Add a photo or video</strong>
+                            <span>Drag and drop or choose a file</span>
+                            <small>JPG, PNG, MP4 &middot; Up to 25MB</small>
+                        </label>
+                        <div class="upload-preview" id="uploadPreview" hidden></div>
+                        <p class="upload-error" id="uploadError" role="alert" hidden></p>
+                    </div>
+                    <fieldset>
+                        <legend>Can we share your testimony publicly <span aria-hidden="true">*</span></legend>
+                        <div class="sharing-options"><label><input type="radio" name="publicSharing" value="public"
+                                    required><span><strong>A</strong> Yes, you may share my
+                                    testimony</span></label><label><input type="radio" name="publicSharing"
+                                    value="anonymous"><span><strong>B</strong> Yes, but keep me
+                                    anonymous</span></label><label><input type="radio" name="publicSharing"
+                                    value="documentation"><span><strong>C</strong> No, I am sharing this for
+                                    documentation</span></label></div>
+                    </fieldset>
+                    <button class="button button-blue" type="submit">Submit testimony <span
+                            aria-hidden="true">&rarr;</span></button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
+                </form>
+                <div class="success-message" id="successMessage" hidden>
+                    <div class="success-panel">
+                        <p class="eyebrow">Thank you</p>
+                        <h3>Your story has been received.</h3>
+                        <p>Thank you for sharing what God has done. Your story will be reviewed before publication.</p>
+                        <button class="text-link" type="button" id="resetForm">Share another testimony <span
+                                aria-hidden="true">&rarr;</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="wave-divider wave-statement" aria-hidden="true"></div>
+    <footer class="site-footer">
+        <div class="page-width footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="brand" href="index.html#top" aria-label="Chapel Of Grace home"><img class="brand-logo"
+                            src="logo.jpg" alt="Chapel Of Grace"></a>
+                    <p class="footer-kicker">A living record of God's faithfulness.</p>
+                    <p>Stories of hope, answered prayer, and changed lives, shared one testimony at a time.</p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-label">Visit us</p>
+                    <p class="visit-schedule"><strong>Sunday</strong> Service 8AM<br><strong>Tuesday</strong> Bible
+                        study 5:30PM<br><strong>Thursday</strong> Otoge meeting 10AM<br><strong>Friday</strong> Prayer
+                        meeting 5:30PM</p>
+                    <p>Contact us through the testimony form.</p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-label">Explore</p>
+                    <a href="share.html">Share your testimony</a>
+                    <a href="stories.html">Read testimonies</a>
+                    <a href="index.html#locations">Locate us</a>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-label">Follow</p>
+                    <a href="https://www.instagram.com/chapel_of_grace_ibadan/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
+                    <a href="https://web.facebook.com/ChapelofGraceIbadan/" target="_blank"
+                        rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.youtube.com/@chapelofgraceibadan" target="_blank"
+                        rel="noopener noreferrer">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="page-width footer-bottom"><span>&copy; <span id="currentYear"></span> Chapel Of
+                Grace</span>
+        </div>
+    </footer>
+</body>
+
+</html>

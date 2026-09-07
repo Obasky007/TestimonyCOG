@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Read testimonies of faithfulness from the Chapel Of Grace community.">
+    <title>Stories Of Faithfulness - Chapel Of Grace</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body class="stories-page">
+    <header class="site-header" id="siteHeader">
+        <a class="brand" href="index.html#top" aria-label="Chapel Of Grace home"><img class="brand-logo" src="logo.jpg"
+                alt="Chapel Of Grace"></a>
+        <nav class="desktop-nav" aria-label="Primary navigation"><a href="share.html">Share your testimony</a><a
+                href="stories.html" aria-current="page">Read testimonies</a></nav>
+        <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"
+            aria-controls="mobileNav"><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation"><a href="share.html">Share your
+                testimony</a><a href="stories.html" aria-current="page">Read testimonies</a></nav>
+    </header>
+
+    <main id="top">
+        <section class="hero stories-hero" aria-labelledby="storiesHeroTitle">
+            <div class="hero-image" aria-hidden="true"></div>
+            <div class="hero-shade" aria-hidden="true"></div>
+            <div class="hero-inner page-width">
+                <p class="eyebrow light">Chapel Of Grace / The collection</p>
+                <h1 id="storiesHeroTitle">Stories of<br><em>faithfulness.</em></h1>
+                <p class="hero-copy">Read how God has moved in the lives of people just like you.</p>
+                <a class="button button-light" href="#stories">Explore the stories <span
+                        aria-hidden="true">&darr;</span></a>
+                <div class="verse"><span>"They overcame him ... by the word of their testimony."</span><small>Revelation
+                        12:11</small></div>
+            </div>
+        </section>
+
+        <div class="wave-divider wave-white" aria-hidden="true"></div>
+        <section class="stories section" id="stories">
+            <div class="page-width">
+                <div class="stories-page-heading">
+                    <p class="eyebrow">Chapel Of Grace / The collection</p>
+                    <h1>Stories of <em>faithfulness.</em></h1>
+                    <p>Read how God has moved in the lives of people just like you.</p>
+                </div>
+                <div class="filters" aria-label="Filter testimonies"><button class="filter active" type="button"
+                        data-filter="all">All</button><button class="filter" type="button"
+                        data-filter="healing">Healing</button><button class="filter" type="button"
+                        data-filter="provision">Provision</button><button class="filter" type="button"
+                        data-filter="career-breakthrough">Career breakthrough</button><button class="filter"
+                        type="button" data-filter="family">Family</button><button class="filter" type="button"
+                        data-filter="restoration">Restoration</button><button class="filter" type="button"
+                        data-filter="salvation">Salvation</button></div>
+                <div class="story-grid" id="storyGrid"></div>
+            </div>
+        </section>
+
+        <div class="story-modal" id="storyModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+            <div class="story-modal-panel">
+                <button class="modal-close" type="button" aria-label="Close testimony">&times;</button>
+                <div class="modal-navigation" aria-label="Testimony navigation">
+                    <button class="modal-previous" type="button" aria-label="Previous testimony">&larr;</button>
+                    <button class="modal-next" type="button" aria-label="Next testimony">&rarr;</button>
+                </div>
+                <p class="eyebrow modal-category"></p>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <p class="modal-story"></p>
+                <div class="modal-details">
+                    <span><strong>Shared by</strong><span class="modal-name"></span></span>
+                    <span><strong>Department</strong><span class="modal-department"></span></span>
+                    <span><strong>Location</strong><span class="modal-location"></span></span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="wave-divider wave-statement" aria-hidden="true"></div>
+    <footer class="site-footer">
+        <div class="page-width footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="brand" href="index.html#top" aria-label="Chapel Of Grace home"><img class="brand-logo"
+                            src="logo.jpg" alt="Chapel Of Grace"></a>
+                    <p class="footer-kicker">A living record of God's faithfulness.</p>
+                    <p>Stories of hope, answered prayer, and changed lives, shared one testimony at a time.</p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-label">Visit us</p>
+                    <p class="visit-schedule"><strong>Sunday</strong> Service 8AM<br><strong>Tuesday</strong> Bible
+                        study 5:30PM<br><strong>Thursday</strong> Otoge meeting 10AM<br><strong>Friday</strong> Prayer
+                        meeting 5:30PM</p>
+                    <p>Contact us through the testimony form.</p>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-label">Explore</p>
+                    <a href="share.html">Share your testimony</a>
+                    <a href="stories.html">Read testimonies</a>
+                    <a href="index.html#locations">Locate us</a>
+                </div>
+                <div class="footer-column">
+                    <p class="footer-label">Follow</p>
+                    <a href="https://www.instagram.com/chapel_of_grace_ibadan/" target="_blank"
+                        rel="noopener noreferrer">Instagram</a>
+                    <a href="https://web.facebook.com/ChapelofGraceIbadan/" target="_blank"
+                        rel="noopener noreferrer">Facebook</a>
+                    <a href="https://www.youtube.com/@chapelofgraceibadan" target="_blank"
+                        rel="noopener noreferrer">YouTube</a>
+                </div>
+            </div>
+        </div>
+        <div class="page-width footer-bottom"><span>&copy; <span id="currentYear"></span> Chapel Of
+                Grace</span>
+        </div>
+    </footer>
+</body>
+
+</html>
