@@ -1,34 +1,92 @@
-const testimonies = [
-    { category: 'healing', title: 'When everything changed', testimony: 'After months of waiting and praying, God answered my prayer in a way I never expected. What felt like a closed door became a reminder that God was working even in the silence.', name: 'David', department: 'Testimony', location: 'Ibadan', image: 'https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=900&q=80' },
-    { category: 'provision', title: 'Provision in the wilderness', testimony: 'When the rent was due and the account was empty, God showed up in an unexpected way. His provision arrived exactly when I needed it.', name: 'Grace', department: 'Women\'s Fellowship', location: 'Ado-Ekiti', image: 'https://images.unsplash.com/photo-1470214304380-aadaedcfff1b?auto=format&fit=crop&w=900&q=80' },
-    { category: 'career-breakthrough', title: 'The door that finally opened', testimony: 'After seven rejections, I almost gave up. The eighth door was the one God had prepared, and it opened at the right time.', name: 'Esther', department: 'Career', location: 'Ibadan', image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80' },
-    { category: 'family', title: 'A home restored', testimony: 'God brought peace back into my family. Conversations that once ended in conflict became moments of grace, patience, and healing.', name: 'Michael', department: 'Family Life', location: 'Ado-Ekiti', image: 'https://images.unsplash.com/photo-1513159446162-54eb8bdaa79b?auto=format&fit=crop&w=900&q=80' },
-    { category: 'restoration', title: 'Restored from the ashes', testimony: 'I had lost my work, my hope, and my sense of direction. Then God stepped in and began restoring what I thought was gone forever.', name: 'Sarah', department: 'Testimony', location: 'Ibadan', image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=900&q=80' },
-    { category: 'salvation', title: 'Delivered from darkness', testimony: 'For years I was bound by addiction. One night at the altar, everything shifted, and I found new life in Christ.', name: 'Joseph', department: 'Men\'s Fellowship', location: 'Ado-Ekiti', image: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=900&q=80' }
-];
+let testimonies = [];
+let visibleTestimonies = [];
 
-let visibleTestimonies = testimonies;
-const comingSoonStory = {
-    category: 'Coming soon',
-    title: 'Coming soon',
-    testimony: 'New testimonies will be shared here soon.',
-    name: 'Coming soon',
-    department: 'Coming soon',
-    location: 'Coming soon'
-};
+function loadJSON(url) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.setRequestHeader('Accept', 'application/json');
+        xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 400) {
+                try {
+                    resolve(JSON.parse(xhr.responseText));
+                } catch (error) {
+                    reject(error);
+                }
+            } else {
+                reject(new Error(`Unable to load ${url}`));
+            }
+        };
+        xhr.onerror = () => reject(new Error(`Unable to load ${url}`));
+        xhr.send();
+    });
+}
+
+async function loadTestimonies() {
+    const grid = document.querySelector('#storyGrid');
+
+    if (!grid) return;
+
+    try {
+        let data = null;
+        const inlineData = document.querySelector('#storyData');
+
+        if (inlineData) {
+            data = JSON.parse(inlineData.textContent);
+        } else {
+            const response = await fetch('./data/testimonies.json', { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error(`Unable to load testimonies.json (${response.status})`);
+            }
+            data = await response.json();
+        }
+
+        if (!data || !Array.isArray(data.testimonies)) {
+            throw new Error('Invalid testimonies.json structure');
+        }
+
+        testimonies = data.testimonies;
+        visibleTestimonies = testimonies;
+
+        renderStories();
+    } catch (error) {
+        console.error('Failed to load testimonies:', error);
+
+        grid.innerHTML = `
+            <p class="empty-story-state">
+                Unable to load testimonies.
+            </p>
+        `;
+    }
+}
+
+function displayCategory(category) {
+    return category.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function previewText(text) {
+    const words = text.split(/\s+/);
+    const previewWords = words.slice(0, 15);
+    return `${previewWords.join(' ')}${words.length > 15 ? '…' : ''}`;
+}
 
 function renderStories(filter = 'all') {
     const grid = document.querySelector('#storyGrid');
     if (!grid) return;
     const visible = filter === 'all' ? testimonies : testimonies.filter((story) => story.category === filter);
     visibleTestimonies = visible;
+
+    if (!visible.length) {
+        grid.innerHTML = '<p class="empty-story-state">There is nothing here at the moment</p>';
+        return;
+    }
+
     grid.innerHTML = visible.map((story, index) => `
-        <article class="story-card" data-story-index="${testimonies.indexOf(story)}" role="button" tabindex="0" aria-label="Read testimony coming soon">
-            <img class="card-image" src="${story.image}" alt="" loading="lazy">
-            <span class="card-category">${comingSoonStory.category}</span>
-            <h3>${comingSoonStory.title}</h3>
-            <p>${comingSoonStory.testimony}</p>
-            <small>${comingSoonStory.name}</small>
+        <article class="story-card" data-story-index="${index}" role="button" tabindex="0" aria-label="Read testimony">
+            <span class="card-category">${displayCategory(story.category)}</span>
+            <h3>${story.title}</h3>
+            <p>${previewText(story.testimony)}</p>
+            <small>${story.name}</small>
             <button class="read-more" type="button">Read more <span aria-hidden="true">&rarr;</span></button>
         </article>
     `).join('');
@@ -46,16 +104,16 @@ function setupStoryModal() {
 
     const displayStory = (story) => {
         if (!story) return;
-        modal.querySelector('.modal-category').textContent = comingSoonStory.category;
-        modal.querySelector('.modal-title').textContent = comingSoonStory.title;
-        modal.querySelector('.modal-story').textContent = comingSoonStory.testimony;
-        modal.querySelector('.modal-name').textContent = comingSoonStory.name;
-        modal.querySelector('.modal-department').textContent = comingSoonStory.department;
-        modal.querySelector('.modal-location').textContent = comingSoonStory.location;
+        modal.querySelector('.modal-category').textContent = displayCategory(story.category);
+        modal.querySelector('.modal-title').textContent = story.title;
+        modal.querySelector('.modal-story').textContent = story.testimony;
+        modal.querySelector('.modal-name').textContent = story.name;
+        modal.querySelector('.modal-department').textContent = '';
+        modal.querySelector('.modal-location').textContent = '';
     };
     const openStory = (card) => {
-        const storyIndex = visibleTestimonies.findIndex((story) => story === testimonies[Number(card.dataset.storyIndex)]);
-        if (storyIndex < 0) return;
+        const storyIndex = Number(card.dataset.storyIndex);
+        if (storyIndex < 0 || storyIndex >= visibleTestimonies.length) return;
         activeStoryIndex = storyIndex;
         displayStory(visibleTestimonies[activeStoryIndex]);
         modal.hidden = false;
@@ -99,16 +157,26 @@ function setupMenu() {
     const header = document.querySelector('#siteHeader');
     const button = header.querySelector('.menu-toggle');
     const menu = document.querySelector('#mobileNav');
-    button.addEventListener('click', () => {
+    const closeMenu = () => {
+        menu.classList.remove('open');
+        header.classList.remove('menu-open');
+        button.setAttribute('aria-expanded', 'false');
+    };
+
+    button.addEventListener('click', (event) => {
+        event.stopPropagation();
         const open = header.classList.toggle('menu-open');
         menu.classList.toggle('open', open);
         button.setAttribute('aria-expanded', String(open));
     });
-    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-        menu.classList.remove('open');
-        document.querySelector('#siteHeader').classList.remove('menu-open');
-        document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
-    }));
+
+    menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+    document.addEventListener('click', (event) => {
+        if (!header.contains(event.target)) {
+            closeMenu();
+        }
+    });
 }
 
 function setupHeader() {
@@ -262,7 +330,7 @@ function setupFooterDate() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderStories();
+    loadTestimonies();
     setupMenu();
     setupHeader();
     setupFilters();
