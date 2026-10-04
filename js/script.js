@@ -33,6 +33,8 @@ async function loadTestimonies() {
 
         if (inlineData) {
             data = JSON.parse(inlineData.textContent);
+        } else if (window.storyData) {
+            data = window.storyData;
         } else {
             const response = await fetch('./data/testimonies.json', { cache: 'no-store' });
             if (!response.ok) {
